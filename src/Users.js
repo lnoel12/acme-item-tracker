@@ -6,6 +6,7 @@ const Users = ({ users })=> {
   return (
     <div>
       <h1>Users</h1>
+      <button>onClick={createUser}+</button>
       <ul>
         {
           users.map( user => {
@@ -25,5 +26,13 @@ const mapStateToProps = (state)=> {
   return {
     users: state.users
   };
+  
 }
-export default connect(mapStateToProps)(Users);
+const mapDispatch =(dispatch)=>{
+  return{
+    createUser: async()=>{
+      const user = axios.post('/api/users', {name: Math.random})).data
+    
+  }
+}
+export default connect(mapStateToProps,mapDispatch)(Users);

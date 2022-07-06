@@ -7,8 +7,8 @@ const initialState = {
 };
 
 const store = createStore((state = initialState, action)=> { 
-  if(action.type === 'SET_THINGS'){
-    return {...state, things: action.things };
+  if(action.type === 'DELETE_THINGS'){
+    return {...state, things: state.things.filter(thing =>thing.id !== action.thing.id) };
   }
   if(action.type === 'SET_USERS'){
     return {...state, users: action.users }; 
@@ -18,6 +18,9 @@ const store = createStore((state = initialState, action)=> {
   }
   if(action.type === 'CREATE_THING'){
     return {...state, things: [...state.things, action.thing ]}; 
+  }
+  if(action.type === 'CREATE_USER'){
+    return {...state, things: [...state.users, action.user ]}; 
   }
   return state;
 });
