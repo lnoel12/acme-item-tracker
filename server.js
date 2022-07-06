@@ -47,6 +47,17 @@ app.delete('/api/things/:id', async(req, res, next)=> {
   try {
     const thing= await thing.findByPK(req.params.id);
     await thing.destroy()
+    res.sendStatus(204)
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+app.delete('/api/users/:id', async(req, res, next)=> {
+  try {
+    const thing= await User.findByPK(req.params.id);
+    await thing.destroy()
+    res.sendStatus(204)
   }
   catch(ex){
     next(ex);

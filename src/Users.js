@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-const Users = ({ users })=> {
+const Users = ({ users , createUser, deleteUser })=> {
   return (
     <div>
       <h1>Users</h1>
@@ -30,8 +30,12 @@ const mapStateToProps = (state)=> {
 }
 const mapDispatch =(dispatch)=>{
   return{
+    deleteUser: async()=>{
+      const user = (await axios.delete('/api/users', {name: Math.random})).data
+    
+  },
     createUser: async()=>{
-      const user = axios.post('/api/users', {name: Math.random})).data
+      const user = (await axios.post('/api/users', {name: Math.random})).data
     
   }
 }

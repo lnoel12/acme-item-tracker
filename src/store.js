@@ -1,3 +1,4 @@
+import { user } from 'pg/lib/defaults';
 import { createStore } from 'redux';
 
 const initialState = {
@@ -9,6 +10,9 @@ const initialState = {
 const store = createStore((state = initialState, action)=> { 
   if(action.type === 'DELETE_THINGS'){
     return {...state, things: state.things.filter(thing =>thing.id !== action.thing.id) };
+  }
+  if(action.type === 'DELETE_USERS'){
+    return {...state, users: state.user.filter(user =>user.id !== action.user.id) };
   }
   if(action.type === 'SET_USERS'){
     return {...state, users: action.users }; 
