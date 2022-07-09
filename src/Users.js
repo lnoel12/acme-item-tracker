@@ -36,7 +36,7 @@ const mapDispatch =(dispatch)=>{
   },
     createUser: async()=>{
       const user = (await axios.post('/api/users', {name: Math.random})).data
-    
+    }
   }
 }
 export default connect(mapStateToProps,mapDispatch)(Users);
